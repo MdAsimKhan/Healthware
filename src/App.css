@@ -1,0 +1,20 @@
+.App {
+  text-align: center;
+  padding: 1%;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.smlCard{
+  background-color: rgba(101, 151, 211, 0.489)!important;
+
+}
+.cardHeader{
+  opacity: 1;
+}
+.cardContainer{
+  display: flex;
+  flex-direction: row;
+}
