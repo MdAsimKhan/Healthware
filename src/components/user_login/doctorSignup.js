@@ -102,7 +102,7 @@ function DoctorLogin() {
         <DatePicker
           selected={selectedDate}
           onChange={(date) => setSelectedDate(date)}
-          dateFormat="dd/MM/yyyy"
+          dateFormat="dd/mm/yyyy"
           showYearDropdown
           scrollableYearDropdown
           yearDropdownItemNumber={15}

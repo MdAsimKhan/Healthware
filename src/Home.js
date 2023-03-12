@@ -9,7 +9,7 @@ function card_Info(user) {
         <>
             <Card className='smlCard' style={{ width: '100%' }}>
                 <Card.Header className='cardHeader'>{user}</Card.Header>
-                <Link to={`signup/`+user}>
+                <Link to={`signup/`+user} style={{ color: 'inherit', textDecoration: 'inherit'}} >
                     <Card.Body>
                         <Card.Title className='cardTitle'>Sign UP</Card.Title>
                         <Card.Text className='cardText'>

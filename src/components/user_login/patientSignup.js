@@ -83,7 +83,7 @@ function PatientSignup() {
         <DatePicker
           selected={selectedDate}
           onChange={(date) => setSelectedDate(date)}
-          dateFormat="DD/MM/YYYY"
+          dateFormat="dd/mm/yyyy"
           showYearDropdown
           scrollableYearDropdown
           yearDropdownItemNumber={15}
