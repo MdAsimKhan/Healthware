@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function Doctor_Login() {
+function DoctorLogin() {
   const [validated, setValidated] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -168,4 +168,4 @@ function Doctor_Login() {
   );
 }
 
-export default Doctor_Login;
+export default DoctorLogin;
