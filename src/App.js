@@ -27,7 +27,7 @@ function App() {
                 <Card.Title className='cardTitle'>Light Card Title</Card.Title>
                 <Card.Text className='cardText'>
                   Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
+                  bulk of the cards content.
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -37,7 +37,7 @@ function App() {
                 <Card.Title className='cardTitle'>Light Card Title</Card.Title>
                 <Card.Text className='cardText'>
                   Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
+                  bulk of the cards content.
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -47,10 +47,10 @@ function App() {
                 <Card.Title className='cardTitle'>Light Card Title</Card.Title>
                 <Card.Text className='cardText'>
                   Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
+                  bulk of the cards content.
                 </Card.Text>
               </Card.Body>
-            </Card>
+            </Card >
           </div>
         </Card>
 
