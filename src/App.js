@@ -1,63 +1,34 @@
-import './App.css';
-// import { Route, Routes, Router } from 'react-router-dom';
-import Navbars from './Navbars';
+import './css/App.css';
 import { Container } from 'react-bootstrap';
-import Card from 'react-bootstrap/Card';
+import Home from './Home';
+import Login from './components/user_login/Login'
+import { Routes, Route } from 'react-router-dom';
+import Navbars from './Navbars';
+import HospitalLogin from './components/user_login/hospital_login'
 function App() {
   return (
-    // <Router>
-    <Container>
-      <div className="App">
-        <Navbars />
-        <br />
-        <Card className="bg-dark text-white">
-          <Card.Img src="./gradd.jpg" className="images" alt="Card image" />
-          <Card.ImgOverlay>
-            <Card.Title >Welcome to the HealthWare</Card.Title>
-            <Card.Text>
-              This is a wider card with supporting text below as a natural lead-in
-              to additional content. This content is a little bit longer.
-            </Card.Text>
-          </Card.ImgOverlay>
-
-          <div className='cardContainer'>
-          <Card className='smlCard' style={{ width: '33.3%' }}>
-              <Card.Header className='cardHeader'>Header</Card.Header>
-              <Card.Body>
-                <Card.Title className='cardTitle'>Light Card Title</Card.Title>
-                <Card.Text className='cardText'>
-                  Some quick example text to build on the card title and make up the
-                  bulk of the cards content.
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          <Card className='smlCard' style={{ width: '33.3%' }}>
-              <Card.Header className='cardHeader'>Header</Card.Header>
-              <Card.Body>
-                <Card.Title className='cardTitle'>Light Card Title</Card.Title>
-                <Card.Text className='cardText'>
-                  Some quick example text to build on the card title and make up the
-                  bulk of the cards content.
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          <Card className='smlCard' style={{ width: '33.3%' }}>
-              <Card.Header className='cardHeader'>Header</Card.Header>
-              <Card.Body>
-                <Card.Title className='cardTitle'>Light Card Title</Card.Title>
-                <Card.Text className='cardText'>
-                  Some quick example text to build on the card title and make up the
-                  bulk of the cards content.
-                </Card.Text>
-              </Card.Body>
-            </Card >
-          </div>
-        </Card>
 
 
+
+    <div className='App'>
+      <Navbars />
+      <div className='content'>
+        <Container>
+          <Routes>
+            <Route  path='/' element={<Home />}></Route>
+
+              <Route path='/signup/hospital' element={<HospitalLogin />} />
+              <Route path='/login' element={<Login />} />
+      
+          </Routes>
+
+        </Container>
       </div>
-    </Container>
-    // </Router>
+    </div>
+
+
+
+
   );
 }
 

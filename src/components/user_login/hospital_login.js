@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function Hospital_Login() {
+function HospitalLogin() {
   const [validated, setValidated] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -96,4 +96,4 @@ function Hospital_Login() {
   );
 }
 
-export default Hospital_Login;
+export default HospitalLogin;
