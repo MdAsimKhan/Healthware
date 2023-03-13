@@ -17,8 +17,11 @@ function Navbars() {
               <Nav.Link><Link style={{ color: 'inherit', textDecoration: 'inherit' }} to={'/'}>Home</Link></Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              {isAuthenticated ? <Nav.Link><Link style={{ color: 'inherit', textDecoration: 'inherit' }} onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })} >Login</Link></Nav.Link> : 
-              <Nav.Link><Link style={{ color: 'inherit', textDecoration: 'inherit' }} onClick={() => loginWithRedirect()} >Login</Link></Nav.Link>}
+              {
+              isAuthenticated ? 
+              <Nav.Link><Link style={{ color: 'inherit', textDecoration: 'inherit' }} onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })} >Login</Link></Nav.Link> 
+              : <Nav.Link><Link style={{ color: 'inherit', textDecoration: 'inherit' }} onClick={() => loginWithRedirect()} >Login</Link></Nav.Link>
+              }
             </Nav.Item>
             <Nav.Item>
               <Nav.Link ><Link style={{ color: 'inherit', textDecoration: 'inherit' }} to={'/about'}>About</Link></Nav.Link>

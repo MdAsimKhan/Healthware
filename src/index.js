@@ -7,16 +7,16 @@ import { BrowserRouter } from 'react-router-dom';
 import { Auth0Provider } from "@auth0/auth0-react";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Auth0Provider
-    domain="dev-i6n4cukc2d01oilh.us.auth0.com"
-    clientId="qyUZNsw8VMwVlcxyhryPcjcwopELC9zU"
-    authorizationParams={{
-      redirect_uri: window.location.origin
-    }}>
-    <BrowserRouter>
+  <BrowserRouter>
+    <Auth0Provider
+      domain="dev-i6n4cukc2d01oilh.us.auth0.com"
+      clientId="qyUZNsw8VMwVlcxyhryPcjcwopELC9zU"
+      authorizationParams={{
+        redirect_uri: window.location.origin
+      }}>
       <App />
-    </BrowserRouter>
-  </Auth0Provider>
+    </Auth0Provider>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
