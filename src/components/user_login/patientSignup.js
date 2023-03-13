@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function Hospital_Login() {
+function PatientSignup() {
   const [validated, setValidated] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -25,7 +25,7 @@ function Hospital_Login() {
         <Form.Control
           required
           type="text"
-          placeholder="Enter organisation name"
+          placeholder="Enter your name"
         />
       </Form.Group>
 
@@ -40,7 +40,12 @@ function Hospital_Login() {
 
       <Form.Group className="mb-3" controlId="phone">
         <Form.Label>Phone Number</Form.Label>
-        <Form.Control required type="tel" placeholder="+91 8888888888" />
+        <Form.Control required type="tel" placeholder="+91 XXXXXXXXXX" />
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="phn">
+        <Form.Label>Emergency contact information</Form.Label>
+        <Form.Control required type="tel" placeholder="+91 XXXXXXXXXX" />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="email">
@@ -52,28 +57,33 @@ function Hospital_Login() {
         />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="website">
-        <Form.Label>Website</Form.Label>
-        <Form.Control
-          required
-          type="url"
-          placeholder="www.organisation_name.com"
-        />
-      </Form.Group>
-
+    
+      
       <Form.Select aria-label="Type">
-        <option>--Select--</option>
-        <option value="1">Government (Public Owned)</option>
-        <option value="2">For-profit</option>
-        <option value="3">Non-profit</option>
+        <option>--Select Blood Group--</option>
+        <option value="1">O+</option>
+        <option value="2">O-</option>
+        <option value="3">A+</option>
+        <option value="4">A-</option>
+        <option value="5">B+</option>
+        <option value="6">B-</option>
+        <option value="7">AB+</option>
+        <option value="8">AB-</option>
       </Form.Select>
 
-      <Form.Group className="mb-3" controlId="date_estb">
-        <Form.Label>Date Established</Form.Label>
+      <Form.Select aria-label="Type">
+        <option>--Select Gender--</option>
+        <option value="1">Male</option>
+        <option value="2">Female</option>
+        <option value="3">Other</option>
+      </Form.Select>
+
+      <Form.Group className="mb-3" controlId="dob">
+        <Form.Label>Date of birth</Form.Label>
         <DatePicker
           selected={selectedDate}
           onChange={(date) => setSelectedDate(date)}
-          dateFormat="dd/MM/yyyy"
+          dateFormat="dd/mm/yyyy"
           showYearDropdown
           scrollableYearDropdown
           yearDropdownItemNumber={15}
@@ -81,13 +91,6 @@ function Hospital_Login() {
         />
       </Form.Group>
 
-      <Form.Group controlId="certificate" className="mb-3">
-        <Form.Label>Upload Registration Certificate</Form.Label>
-        <Form.Text className="text-muted">
-          We might contact you for verification.
-        </Form.Text>
-        <Form.Control required type="file" accept=".pdf" />
-      </Form.Group>
 
       <Button variant="primary" type="submit">
         Create Account
@@ -96,4 +99,4 @@ function Hospital_Login() {
   );
 }
 
-export default Hospital_Login;
+export default PatientSignup;
