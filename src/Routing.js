@@ -32,6 +32,8 @@ function App() {
               <Route path='dashboard' element={<Dashboard/>}/>
               <Route path='profile' element={<UserProfile/>}/>
               </Route>
+
+              
               <Route path='*' element={<h1>Not found</h1>} />
 
           </Routes>
