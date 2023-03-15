@@ -58,8 +58,9 @@ function PatientSignup() {
       </Form.Group>
 
     
-      
-      <Form.Select aria-label="Type">
+      <Form.Group className="mb-3" controlId="bg">
+      <Form.Label>Blood Group</Form.Label>
+        <Form.Select aria-label="Type">
         <option>--Select Blood Group--</option>
         <option value="1">O+</option>
         <option value="2">O-</option>
@@ -70,13 +71,17 @@ function PatientSignup() {
         <option value="7">AB+</option>
         <option value="8">AB-</option>
       </Form.Select>
+      </Form.Group>
 
-      <Form.Select aria-label="Type">
+      <Form.Group className="mb-3" controlId="gender">
+      <Form.Label>Gender</Form.Label>
+        <Form.Select aria-label="Type">
         <option>--Select Gender--</option>
         <option value="1">Male</option>
         <option value="2">Female</option>
         <option value="3">Other</option>
       </Form.Select>
+      </Form.Group>
 
       <Form.Group className="mb-3" controlId="dob">
         <Form.Label>Date of birth</Form.Label>
