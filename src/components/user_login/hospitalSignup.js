@@ -3,9 +3,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import axios from 'axios';
-import qs from 'qs';
-
+import axios from "axios";
+import qs from "qs";
 
 function HospitalLogin() {
   const [validated, setValidated] = useState(false);
@@ -14,12 +13,11 @@ function HospitalLogin() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const data = qs.stringify(formData);
-    axios.post('/signup/hospital', data)
-      .then(response => console.log(response))
-      .catch(error => console.log(error));
-
+    axios
+      .post("/signup/hospital", data)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -29,18 +27,19 @@ function HospitalLogin() {
     setValidated(true);
   };
 
-  const handleChange = event => {
-    setFormData({ ...formData,
-                  [event.target.name]: event.target.value,
-                  [event.target.address]: event.target.value,
-                  [event.target.phone]: event.target.value,
-                  [event.target.email]: event.target.value,
-                  [event.target.website]: event.target.value,
-                  [event.target.type]: event.target.value,
-                  [event.target.date_estb]: event.target.value
-                  // [event.target.registration_certificate]: event.target.value,
-  });
-  }
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+      [event.target.address]: event.target.value,
+      [event.target.phone]: event.target.value,
+      [event.target.email]: event.target.value,
+      [event.target.website]: event.target.value,
+      [event.target.type]: event.target.value,
+      [event.target.date_estb]: event.target.value,
+      // [event.target.registration_certificate]: event.target.value,
+    });
+  };
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="name">
@@ -97,11 +96,7 @@ function HospitalLogin() {
         />
       </Form.Group>
 
-      <Form.Control
-      required 
-      name="type" 
-      onChange={handleChange}
-      type="select">
+      <Form.Control required name="type" onChange={handleChange} type="select">
         <Form.Select aria-label="Type">
           <option value="">--Select--</option>
           <option value="1">Government</option>
