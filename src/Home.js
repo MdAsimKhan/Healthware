@@ -45,7 +45,7 @@ function Home() {
                             {card_Info("Hospital")}
                             {card_Info("Doctor")}
                             {card_Info("Patient")}
-                            {card_Info("Doctor_Dashboard")}
+
 
                         </div>
                     </Card>

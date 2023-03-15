@@ -9,7 +9,9 @@ import DoctorLogin from './components/user_login/doctorSignup';
 import PatientSignup from './components/user_login/patientSignup';
 import Dashboard from './components/dashboard/dashboard';
 import UserProfile from './components/dashboard/profile';
+
 import DoctorDashboard from './components/dashboard/Doctor_Dashboard'
+
 function App() {
   return (
 
@@ -32,7 +34,9 @@ function App() {
               <Route path='/:id'>
               <Route path='dashboard' element={<Dashboard/>}/>
               <Route path='profile' element={<UserProfile/>}/>
+
               <Route path='Doctor_Dashboard' element={<DoctorDashboard/>}/>
+
               </Route>
 
               

@@ -1,0 +1,28 @@
+.card {
+    margin-bottom: 20px;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0069d9!important;
+    border-color: #0062cc;
+  }
+  
+  .col-md-3 {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
