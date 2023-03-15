@@ -7,8 +7,8 @@ let db;
 
 connectToDb((err) => {
   if (!err) {
-    healthware.listen(3000, () => {
-      console.log("App listening on port 3000");
+    healthware.listen(3001, () => {
+      console.log("App listening on port 3001");
     });
     db = getDb();
   }
