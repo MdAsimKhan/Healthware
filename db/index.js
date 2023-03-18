@@ -1,8 +1,15 @@
 const express = require("express");
 const { connectToDb, getDb } = require("./db");
+const cors = require("cors");
+
+const corsOptions = {
+  origin: "*",
+  credentials: true,
+};
 
 const healthware = express();
 healthware.use(express.json());
+healthware.use(cors(corsOptions));
 let db;
 
 connectToDb((err) => {
