@@ -3,46 +3,45 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import axios from 'axios';
-import qs from 'qs';
-
+import axios from "axios";
+import qs from "qs";
 
 function HospitalLogin() {
   const [validated, setValidated] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState([{}]);
 
-  const handleSubmit = (event) => {
+  const handleChange = (event) => {
+    setFormData({
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const data = qs.stringify(formData);
-    axios.post('/signup/hospital', data)
-      .then(response => console.log(response))
-      .catch(error => console.log(error));
-
+    // validate form
+    setSelectedDate(selectedDate);
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
-    // setSelectedDate(selectedDate);
     setValidated(true);
+    // send data to backend
+    const data = qs.parse(formData);
+    axios
+      .post("http://localhost:3001/signup/hospital", data)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
   };
 
-  const handleChange = event => {
-    setFormData({ ...formData,
-                  [event.target.name]: event.target.value,
-                  [event.target.address]: event.target.value,
-                  [event.target.phone]: event.target.value,
-                  [event.target.email]: event.target.value,
-                  [event.target.website]: event.target.value,
-                  [event.target.type]: event.target.value,
-                  [event.target.date_estb]: event.target.value
-                  // [event.target.registration_certificate]: event.target.value,
-  });
-  }
   return (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form
+      noValidate
+      validated={validated}
+      method="post"
+      onSubmit={handleSubmit}
+    >
       <Form.Group className="mb-3" controlId="name">
         <Form.Label>Name</Form.Label>
         <Form.Control
@@ -97,30 +96,34 @@ function HospitalLogin() {
         />
       </Form.Group>
 
-      <Form.Control
-      required 
-      name="type" 
-      onChange={handleChange}
-      type="select">
-        <Form.Select aria-label="Type">
+      <Form.Group
+        className="mb-3"
+        controlId="type"
+        required
+        name="type"
+        onChange={handleChange}
+        type="select"
+      >
+        <Form.Label>Type</Form.Label>
+        <Form.Select>
           <option value="">--Select--</option>
           <option value="1">Government</option>
           <option value="2">For-profit</option>
           <option value="3">Non-profit</option>
         </Form.Select>
-      </Form.Control>
+      </Form.Group>
 
       <Form.Group className="mb-3" controlId="date_estb">
         <Form.Label>Date Established</Form.Label>
         <DatePicker
           name="date_estb"
-          onChange={handleChange}
           selected={selectedDate}
           onChange={(date) => setSelectedDate(date)}
-          dateFormat="dd/mm/yyyy"
+          value={selectedDate}
+          dateFormat="dd/MM/yyyy"
           showYearDropdown
           scrollableYearDropdown
-          yearDropdownItemNumber={15}
+          yearDropdownItemNumber={Date.now}
           required
         />
       </Form.Group>
@@ -133,7 +136,7 @@ function HospitalLogin() {
         <Form.Control
           // name="registration_certificate"
           // onChange={handleChange}
-          required
+          // required
           type="file"
           accept=".pdf"
         />
