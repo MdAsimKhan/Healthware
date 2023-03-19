@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { Form, Button, Alert } from 'react-bootstrap';
 
 function Login() {
-  const history = useHistory();
+  // const history = useHistory();
   const [username] = useState('');
   const [password, setPassword] = useState('');
   const [showError, setShowError] = useState(false);
+  const [loginData, setLoginData] = useState();
+
+  const handleChange = (event) => {
+    setLoginData({
+      ...loginData,[event.target.name]: event.target.value,
+    });
+  };
+  
+
+
 
   function handleSubmit(event) {
     event.preventDefault();
     
     if (username === 'user' && password === 'password') {
-      history.push('/dashboard');
+      // history.push('/dashboard');
     } else {
       setShowError(true);
     }

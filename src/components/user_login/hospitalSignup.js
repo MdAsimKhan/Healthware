@@ -4,16 +4,17 @@ import Form from "react-bootstrap/Form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import { redirect } from "react-router-dom";
 
 
-function HospitalLogin() {
+function HospitalLogin () {
   const [validated, setValidated] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [formData, setFormData] = useState();
 
   const handleChange = (event) => {
     setFormData({
-      [event.target.name]: event.target.value,
+      ...formData,[event.target.name]: event.target.value,
     });
   };
 
@@ -35,9 +36,12 @@ function HospitalLogin() {
     axios
       .post("http://localhost:3001/signup/hospital", data)
       .then((response) => console.log(response))
-      .catch((error) => console.log(error));
-  };
+      .then(redirect('http://localhost:3000/login'))
+      .catch((error) => console.log(error))
+  }
 
+
+  
   return (
     <Form
       noValidate
