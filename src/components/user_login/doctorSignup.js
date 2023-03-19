@@ -3,19 +3,38 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
 
-function DoctorLogin() {
+function DoctorSignup() {
   const [validated, setValidated] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [formData, setFormData] = useState();
 
-  const handleSubmit = (event) => {
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // validate form
+    setSelectedDate(selectedDate);
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
-    // setSelectedDate(selectedDate);
     setValidated(true);
+
+    // send data to backend
+    const data = formData;
+    axios
+      .post("http://localhost:3001/signup/doctor", data)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -23,142 +42,74 @@ function DoctorLogin() {
       <Form.Group className="mb-3" controlId="name">
         <Form.Label>Name</Form.Label>
         <Form.Control
+          onChange={handleChange}
+          name="name"
           required
           type="text"
-          placeholder="Name"
+          placeholder="Dr Santosh Stark"
         />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="Email">
         <Form.Label>Email</Form.Label>
         <Form.Control
+          onChange={handleChange}
+          name="email"
           required
           type="Email"
-          placeholder="Email"
-        />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="Password">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          required
-          type="text"
-          placeholder=" "
+          placeholder="youremail@service.com"
         />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="phone">
         <Form.Label>Phone Number</Form.Label>
-        <Form.Control required type="tel" placeholder="+91 " />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="Age">
-        <Form.Label>Age</Form.Label>
         <Form.Control
+          onChange={handleChange}
+          name="phone"
           required
-          type="number"
-          placeholder=" "
+          type="tel"
+          placeholder="+91 888888888"
         />
       </Form.Group>
 
-
-      <Form.Group className="mb-3" controlId="Specialist">
-        <Form.Label>Specialist</Form.Label>
-        <Form.Control
-          required
-          type="text"
-          placeholder=" "
-        />
-      </Form.Group>
-
-      
-      <Form.Group className="mb-3" controlId="College">
-        <Form.Label>College</Form.Label>
-        <Form.Control
-          required
-          type="text"
-          placeholder=" "
-        />
-      </Form.Group>
-
-      <Form.Select aria-label="Type">
-        <option>--Select--</option>
-        <option value="1">Government</option>
-        <option value="2">Private</option>
-      </Form.Select>
-
-      
-      <Form.Group className="mb-3" controlId="Experience">
-        <Form.Label>Batch</Form.Label>
-        <Form.Control
-          required
-          type="text"
-          placeholder=" "
-        />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="Batch">
-        <Form.Label>Date Established</Form.Label>
+      <Form.Group className="mb-3" controlId="DOB">
+        <Form.Label>Date of birth</Form.Label>
         <DatePicker
           selected={selectedDate}
           onChange={(date) => setSelectedDate(date)}
-          dateFormat="dd/mm/yyyy"
+          dateFormat="dd/MM/yyyy"
+          value={selectedDate}
           showYearDropdown
           scrollableYearDropdown
-          yearDropdownItemNumber={15}
+          yearDropdownItemNumber={Date.now()}
           required
         />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="Chamber">
-        <Form.Label>Chamber</Form.Label>
+      {/* make it list type */}
+      {/* <Form.Group className="mb-3" controlId="Specialisation">
+        <Form.Label>Specialisation</Form.Label>
         <Form.Control
+          onChange={handleChange}
+          name="specialisation"
           required
           type="text"
-          placeholder=" "
+          placeholder="Orthopaedics"
         />
-      </Form.Group>
-      
-      <Form.Group className="mb-3" controlId="Chamber">
-        <Form.Label>Chamber</Form.Label>
-        <Form.Control
-          required
-          type="Chamber"
-          placeholder="If Any "
-        />
-      </Form.Group>
-
+      </Form.Group> */}
 
       <Form.Group controlId="certificate" className="mb-3">
         <Form.Label>Upload Registration Certificate</Form.Label>
-        <Form.Text className="text-muted">
+        <Form.Text className="text-muted m-3">
           We might contact you for verification.
         </Form.Text>
-        <Form.Control required type="file" accept=".pdf" />
-      </Form.Group>
-
-      <Form.Group controlId="certificate" className="mb-3">
-        <Form.Label>Degree Certificate</Form.Label>
-        <Form.Text className="text-muted">
-          We might contact you for verification.
-        </Form.Text>
-        <Form.Control required type="file" accept=".pdf" />
-      </Form.Group>
-
-      <Form.Group controlId="certificate" className="mb-3">
-        <Form.Label>Aadhar Card</Form.Label>
-        <Form.Text className="text-muted">
-          We might contact you for verification.
-        </Form.Text>
-        <Form.Control required type="file" accept=".pdf" />
-      </Form.Group>
-
-      <Form.Group controlId="certificate" className="mb-3">
-        <Form.Label>Pan Card</Form.Label>
-        <Form.Text className="text-muted">
-          We might contact you for verification.
-        </Form.Text>
-        <Form.Control required type="file" accept=".pdf" />
+        <Form.Control
+          onChange={handleChange}
+          name=""
+          // required
+          type="file"
+          accept=".pdf"
+        />
       </Form.Group>
 
       <Button variant="primary" type="submit">
@@ -168,4 +119,4 @@ function DoctorLogin() {
   );
 }
 
-export default DoctorLogin;
+export default DoctorSignup;

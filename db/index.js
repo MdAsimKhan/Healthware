@@ -37,6 +37,15 @@ healthware.get("/hospital", (req, res) => {
     });
 });
 
+healthware.get("/patient", (req, res) => {
+  res.json({ msg: "Patient" });
+});
+
+healthware.get("/doctor", (req, res) => {
+  res.json({ msg: "Dcotor" });
+});
+
+// hospital signup
 healthware.post("/signup/hospital", (req, res) => {
   const hospital = req.body;
 
@@ -50,10 +59,30 @@ healthware.post("/signup/hospital", (req, res) => {
     });
 });
 
-healthware.get("/patient", (req, res) => {
-  res.json({ msg: "Patient" });
+// patient signup
+healthware.post("/signup/patient", (req, res) => {
+  const hospital = req.body;
+
+  db.collection("Patient")
+    .insertOne(hospital)
+    .then((result) => {
+      res.status(201).json(result);
+    })
+    .catch((err) => {
+      res.status(500).json({ err: "Could not create profile" });
+    });
 });
 
-healthware.get("/doctor", (req, res) => {
-  res.json({ msg: "Dcotor" });
+// doctor signup
+healthware.post("/signup/doctor", (req, res) => {
+  const hospital = req.body;
+
+  db.collection("Doctor")
+    .insertOne(hospital)
+    .then((result) => {
+      res.status(201).json(result);
+    })
+    .catch((err) => {
+      res.status(500).json({ err: "Could not create profile" });
+    });
 });
