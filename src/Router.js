@@ -1,7 +1,7 @@
 import './css/App.css';
 import { Container } from 'react-bootstrap';
 import Home from './Home';
-import Login from './components/user_login/login'
+
 import { Routes, Route } from 'react-router-dom';
 import Navbars from './components/Navbars';
 import HospitalLogin from './components/user_login/hospitalSignup'
@@ -9,7 +9,7 @@ import DoctorLogin from './components/user_login/doctorSignup';
 import PatientSignup from './components/user_login/patientSignup';
 import Dashboard from './components/dashboard/dashboard';
 import UserProfile from './components/dashboard/profile';
-
+import Login from './components/user_login/Login'
 import DoctorDashboard from './components/dashboard/Doctor_Dashboard'
 
 function App() {
@@ -23,8 +23,7 @@ function App() {
         <Container>
           <Routes>
             <Route  path='/' element={<Home />}></Route>
-              <Route path='/login' element={<Login />} />
-
+            <Route  path='/login' element={<Login />}></Route>
               <Route path='/signup' >
               <Route path='hospital' element={<HospitalLogin />} />
               <Route path='doctor' element={<DoctorLogin />} />

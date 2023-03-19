@@ -4,12 +4,12 @@ import Form from "react-bootstrap/Form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
-import qs from "qs";
+
 
 function HospitalLogin() {
   const [validated, setValidated] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [formData, setFormData] = useState([{}]);
+  const [formData, setFormData] = useState();
 
   const handleChange = (event) => {
     setFormData({
@@ -28,7 +28,10 @@ function HospitalLogin() {
     }
     setValidated(true);
     // send data to backend
-    const data = qs.parse(formData);
+    // const data =JSON.parse(formData);
+    // const parsing = JSON.parse(formData);
+    const data = formData
+    
     axios
       .post("http://localhost:3001/signup/hospital", data)
       .then((response) => console.log(response))

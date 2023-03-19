@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './css/index.css';
-import App from './Routing';
+import App from './Router';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Auth0Provider } from "@auth0/auth0-react";
@@ -12,7 +12,7 @@ root.render(
       domain="dev-i6n4cukc2d01oilh.us.auth0.com"
       clientId="qyUZNsw8VMwVlcxyhryPcjcwopELC9zU"
       authorizationParams={{
-        redirect_uri: window.location.origin
+        redirect_uri: `http://localhost:3000/:id/dashboard`
       }}>
       <App />
     </Auth0Provider>
