@@ -1,24 +1,21 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import DatalistInput from "react-datalist-input";
+import "react-datalist-input/dist/styles.css";
 import axios from "axios";
 import { redirect } from "react-router-dom";
 
 function HospitalSignup() {
-
-
   const [validated, setValidated] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [formData, setFormData] = useState();
+  const [otype, setotype] = useState("");
 
   const handleChange = (event) => {
     setFormData({
-
       ...formData,
       [event.target.name]: event.target.value,
-
     });
   };
 
@@ -33,21 +30,14 @@ function HospitalSignup() {
       event.stopPropagation();
     }
     setValidated(true);
-
-    // send data to backend
-    // const data =JSON.parse(formData);
-    // const parsing = JSON.parse(formData);
-    const data = formData;
-
+    // data sent without form validaion
     axios
-      .post("http://localhost:3001/signup/hospital", data)
+      .post("http://localhost:3001/signup/hospital", formData)
       .then((response) => console.log(response))
-      .then(redirect('http://localhost:3000/login'))
-      .catch((error) => console.log(error))
-  }
+      .then(redirect("http://localhost:3000/login"))
+      .catch((error) => console.log(error));
+  };
 
-
-  
   return (
     <Form
       noValidate
@@ -104,34 +94,37 @@ function HospitalSignup() {
         <Form.Control
           name="website"
           onChange={handleChange}
-          type="url"
+          type="text"
           placeholder="www.organisation_name.com"
         />
       </Form.Group>
 
-      {/* set onChange */}
       <Form.Group className="mb-3" controlId="type">
-        <Form.Label>Type</Form.Label>
-        <Form.Select>
-          <option>--Select--</option>
-          <option value="1">Government</option>
-          <option value="2">For-profit</option>
-          <option value="3">Non-profit</option>
-        </Form.Select>
+        <Form.Label>Select Organisation Type</Form.Label>
+        <DatalistInput
+          placeholder="Click here to select"
+          items={[
+            { id: "1", value: "Government" },
+            { id: "2", value: "Non-Profit" },
+            { id: "3", value: "Profit" },
+          ]}
+          onSelect={(item) => {
+            setFormData({
+              ...formData,
+              type: item.value,
+            });
+          }}
+        />
       </Form.Group>
 
-      {/* set onChange */}
       <Form.Group className="mb-3" controlId="date_estb">
         <Form.Label>Date Established</Form.Label>
-        <DatePicker
+        <Form.Control
           name="date_estb"
-          selected={selectedDate}
-          onChange={(date) => setSelectedDate(date)}
-          dateFormat="dd/MM/yyyy"
-          showYearDropdown
-          scrollableYearDropdown
-          yearDropdownItemNumber={Date.now}
+          onChange={handleChange}
           required
+          type="date"
+          placeholder="dd/mm/yyyy"
         />
       </Form.Group>
 
