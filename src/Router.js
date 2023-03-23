@@ -1,55 +1,43 @@
-import './css/App.css';
-import { Container } from 'react-bootstrap';
-import Home from './Home';
-
-import { Routes, Route } from 'react-router-dom';
-import Navbars from './components/Navbars';
-import HospitalLogin from './components/user_login/hospitalSignup'
-import DoctorLogin from './components/user_login/doctorSignup';
-import PatientSignup from './components/user_login/patientSignup';
-import Dashboard from './components/dashboard/dashboard';
-import UserProfile from './components/dashboard/profile';
-import Login from './components/user_login/Login'
-import DoctorDashboard from './components/dashboard/Doctor_Dashboard'
+import "./css/App.css";
+import { Container } from "react-bootstrap";
+import Home from "./Home";
+import { Routes, Route } from "react-router-dom";
+import Navbars from "./components/Navbars";
+import HospitalSignup from "./components/user_login/hospitalSignup";
+import DoctorSignup from "./components/user_login/doctorSignup";
+import PatientSignup from "./components/user_login/patientSignup";
+import Dashboard from "./components/dashboard/dashboard";
+import UserProfile from "./components/dashboard/profile";
+import Login from "./components/user_login/login";
+import DoctorDashboard from "./components/dashboard/Doctor_Dashboard";
 
 function App() {
   return (
-
-
-
-    <div className='App'>
+    <div className="App">
       <Navbars />
-      <div className='content'>
+      <div className="content">
         <Container>
           <Routes>
-            <Route  path='/' element={<Home />}></Route>
-            <Route  path='/login' element={<Login />}></Route>
-              <Route path='/signup' >
-              <Route path='hospital' element={<HospitalLogin />} />
-              <Route path='doctor' element={<DoctorLogin />} />
-              <Route path='patient' element={<PatientSignup />} />
-              </Route>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/signup">
+              <Route path="hospital" element={<HospitalSignup />} />
+              <Route path="doctor" element={<DoctorSignup />} />
+              <Route path="patient" element={<PatientSignup />} />
+            </Route>
 
-              <Route path='/:id'>
-              <Route path='dashboard' element={<Dashboard/>}/>
-              <Route path='profile' element={<UserProfile/>}/>
+            <Route path="/:id">
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="profile" element={<UserProfile />} />
 
-              <Route path='Doctor_Dashboard' element={<DoctorDashboard/>}/>
+              <Route path="Doctor_Dashboard" element={<DoctorDashboard />} />
+            </Route>
 
-              </Route>
-
-              
-              <Route path='*' element={<h1>Not found</h1>} />
-
+            <Route path="*" element={<h1>Not found</h1>} />
           </Routes>
-
         </Container>
       </div>
     </div>
-
-
-
-
   );
 }
 

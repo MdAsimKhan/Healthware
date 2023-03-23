@@ -6,20 +6,25 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import { redirect } from "react-router-dom";
 
+function HospitalSignup() {
 
-function HospitalLogin () {
+
   const [validated, setValidated] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [formData, setFormData] = useState();
 
   const handleChange = (event) => {
     setFormData({
-      ...formData,[event.target.name]: event.target.value,
+
+      ...formData,
+      [event.target.name]: event.target.value,
+
     });
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
+
     // validate form
     setSelectedDate(selectedDate);
     const form = event.currentTarget;
@@ -28,11 +33,12 @@ function HospitalLogin () {
       event.stopPropagation();
     }
     setValidated(true);
+
     // send data to backend
     // const data =JSON.parse(formData);
     // const parsing = JSON.parse(formData);
-    const data = formData
-    
+    const data = formData;
+
     axios
       .post("http://localhost:3001/signup/hospital", data)
       .then((response) => console.log(response))
@@ -103,30 +109,24 @@ function HospitalLogin () {
         />
       </Form.Group>
 
-      <Form.Group
-        className="mb-3"
-        controlId="type"
-        required
-        name="type"
-        onChange={handleChange}
-        type="select"
-      >
+      {/* set onChange */}
+      <Form.Group className="mb-3" controlId="type">
         <Form.Label>Type</Form.Label>
         <Form.Select>
-          <option value="">--Select--</option>
+          <option>--Select--</option>
           <option value="1">Government</option>
           <option value="2">For-profit</option>
           <option value="3">Non-profit</option>
         </Form.Select>
       </Form.Group>
 
+      {/* set onChange */}
       <Form.Group className="mb-3" controlId="date_estb">
         <Form.Label>Date Established</Form.Label>
         <DatePicker
           name="date_estb"
           selected={selectedDate}
           onChange={(date) => setSelectedDate(date)}
-          value={selectedDate}
           dateFormat="dd/MM/yyyy"
           showYearDropdown
           scrollableYearDropdown
@@ -156,4 +156,4 @@ function HospitalLogin () {
   );
 }
 
-export default HospitalLogin;
+export default HospitalSignup;
