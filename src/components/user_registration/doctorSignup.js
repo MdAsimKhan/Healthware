@@ -5,11 +5,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 
+
 function DoctorSignup() {
   const [validated, setValidated] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [formData, setFormData] = useState();
-
+  const [success, setSucess] = useState(false)
   const handleChange = (event) => {
     setFormData({
       ...formData,
@@ -17,12 +18,14 @@ function DoctorSignup() {
     });
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit =  (event) => {
     event.preventDefault();
 
     // validate form
+   
     setSelectedDate(selectedDate);
     const form = event.currentTarget;
+    
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
@@ -34,10 +37,21 @@ function DoctorSignup() {
     axios
       .post("http://localhost:3001/signup/doctor", data)
       .then((response) => console.log(response))
+      .then(setSucess(true))
       .catch((error) => console.log(error));
   };
 
   return (
+    <>
+    {success ? (
+      <section>
+        <h1>Doctor Registration completed</h1>
+        <p>
+          <a href="/login">Login</a>
+        </p>
+      </section>
+    ):(
+    
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="name">
         <Form.Label>Name</Form.Label>
@@ -116,6 +130,8 @@ function DoctorSignup() {
         Create Account
       </Button>
     </Form>
+    )}
+    </>
   );
 }
 
