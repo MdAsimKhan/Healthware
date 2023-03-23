@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 
 
@@ -88,16 +86,15 @@ function DoctorSignup() {
 
       <Form.Group className="mb-3" controlId="DOB">
         <Form.Label>Date of birth</Form.Label>
-        <DatePicker
+        {/* <DatePicker
           selected={selectedDate}
           onChange={(date) => setSelectedDate(date)}
-          dateFormat="dd/MM/yyyy"
-          value={selectedDate}
+          peekNextMonth
+          showMonthDropdown
           showYearDropdown
-          scrollableYearDropdown
-          yearDropdownItemNumber={Date.now()}
-          required
-        />
+          maxDate={Date.now()}
+          dropdownMode="select"
+        /> */}
       </Form.Group>
 
       {/* make it list type */}

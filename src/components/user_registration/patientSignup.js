@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 
 function PatientSignup() {
@@ -125,16 +123,15 @@ function PatientSignup() {
       {/* set onChange */}
       <Form.Group className="mb-3" controlId="dob">
         <Form.Label>Date of birth</Form.Label>
-        <DatePicker
-          name="date_estb"
+        {/* <DatePicker
           selected={selectedDate}
           onChange={(date) => setSelectedDate(date)}
-          dateFormat="dd/MM/yyyy"
+          peekNextMonth
+          showMonthDropdown
           showYearDropdown
-          scrollableYearDropdown
-          yearDropdownItemNumber={Date.now}
-          required
-        />
+          maxDate={Date.now()}
+          dropdownMode="select"
+        /> */}
       </Form.Group>
 
       <Button variant="primary" type="submit">
