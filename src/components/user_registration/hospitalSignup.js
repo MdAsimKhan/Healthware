@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import Registration from "./registration_done";
 function HospitalSignup() {
@@ -129,7 +129,7 @@ function HospitalSignup() {
           {/* set onChange */}
           <Form.Group className="mb-3" controlId="date_estb">
             <Form.Label>Date Established</Form.Label>
-            <DatePicker
+            {/* <DatePicker
               name="date_estb"
               selected={selectedDate}
               onChange={(date) => setSelectedDate(date)}
@@ -139,7 +139,7 @@ function HospitalSignup() {
               yearDropdownItemNumber={Date.now}
               required
               
-            />
+            /> */}
           </Form.Group>
 
           <Form.Group controlId="certificate" className="mb-3">

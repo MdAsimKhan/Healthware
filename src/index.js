@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './css/index.css';
 import App from './Router';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Route,Routes, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 // import { Auth0Provider } from "@auth0/auth0-react";
-import Login from './components/user_login/login';
-import Dashboard from './components/dashboard/dashboard';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,9 +18,9 @@ root.render(
       }}> */}
 
     <BrowserRouter>
-      
-       <App/>
-      
+
+      <App />
+
     </BrowserRouter>
     {/* </Auth0Provider> */}
   </React.StrictMode>

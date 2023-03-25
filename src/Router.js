@@ -7,8 +7,8 @@ import HospitalSignup from "./components/user_registration/hospitalSignup";
 import DoctorSignup from "./components/user_registration/doctorSignup";
 import PatientSignup from "./components/user_registration/patientSignup";
 import Dashboard from "./components/dashboard/dashboard";
-import Login from "./components/user_login/login";
-import DoctorDashboard from "./components/dashboard/Doctor_Dashboard";
+import Login from "./components/user_login/doctor_login";
+import DoctorDashboard from "./components/dashboard/doctor_dashboard";
 function App() {
   return (
     <div className="App">
@@ -28,7 +28,7 @@ function App() {
               <Route path="dashboard" element={<Dashboard />} />
               {/* <Route path="profile" element={<UserProfile />} /> */}
 
-              <Route path="Doctor_Dashboard" element={<DoctorDashboard />} />
+              <Route path="doctor_dashboard" element={<DoctorDashboard />} />
             </Route>
 
             <Route path="*" element={<h1>Not found</h1>} />

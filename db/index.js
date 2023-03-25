@@ -38,11 +38,33 @@ healthware.get("/hospital", (req, res) => {
 });
 
 healthware.get("/patient", (req, res) => {
-  res.json({ msg: "Patient" });
+  let patients = [];
+
+  db.collection("Patient")
+    .find()
+    .sort({ name: 1 })
+    .forEach((patient) => patients.push(patient))
+    .then(() => {
+      res.status(200).json(patients);
+    })
+    .catch(() => {
+      res.status(500).json({ msg: "Error" });
+    });
 });
 
 healthware.get("/doctor", (req, res) => {
-  res.json({ msg: "Dcotor" });
+  let doctors = [];
+
+  db.collection("Doctor")
+    .find()
+    .sort({ name: 1 })
+    .forEach((doctor) => doctors.push(doctor))
+    .then(() => {
+      res.status(200).json(doctors);
+    })
+    .catch(() => {
+      res.status(500).json({ msg: "Error" });
+    });
 });
 
 // hospital signup
