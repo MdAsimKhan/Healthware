@@ -7,7 +7,7 @@ import HospitalSignup from "./components/user_registration/hospitalSignup";
 import DoctorSignup from "./components/user_registration/doctorSignup";
 import PatientSignup from "./components/user_registration/patientSignup";
 import LoginPage from "./components/user_login/login_fr";
-import DoctorDashboard from "./components/dashboard/doctor_dashboard";
+import DoctorDashboard from "./components/dashboard/Doctor_Dashboard";
 import PatientDashboard from "./components/Pdashboard/patientdashboard";
 import Profile from "./components/Pdashboard/patientprofile";
 import Appointment from "./components/Pdashboard/appointments";
@@ -21,8 +21,7 @@ function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/login" element={<LoginPage />}></Route>
 
-
-            <Route path="/signup" >
+            <Route path="/signup">
               <Route path="hospital" element={<HospitalSignup />} />
               <Route path="doctor" element={<DoctorSignup />} />
               <Route path="patient" element={<PatientSignup />} />
@@ -31,7 +30,7 @@ function App() {
             <Route path="/:id">
               <Route path="d/profile" element={<Profile />} />
               <Route path="d/appointments" element={<Appointment />} />
-   
+
               {/* <Route path="profile" element={<UserProfile />} /> */}
               <Route path="doctor_dashboard" element={<DoctorDashboard />} />
               <Route path="patient_dashboard" element={<PatientDashboard />} />
