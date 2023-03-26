@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import DatalistInput from "react-datalist-input";
-import "react-datalist-input/dist/styles.css";
+import PasswordChecklist from "react-password-checklist";
 import axios from "axios";
 import Registration from "./registration_done";
 
@@ -11,7 +10,8 @@ function HospitalSignup() {
   const [selectedDate, setSelectedDate] = useState(null);
   const [formData, setFormData] = useState();
   const [success, setSucess] = useState(false);
-  const [otype, setotype] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordAgain, setPasswordAgain] = useState("");
 
   const handleChange = (event) => {
     setFormData({
@@ -65,14 +65,34 @@ function HospitalSignup() {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="password">
+          <Form.Group className="mb-3">
             <Form.Label>Password</Form.Label>
             <Form.Control
-              name="password"
-              onChange={handleChange}
               required
-              type="text"
+              type="password"
               placeholder="Enter your password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control
+              onChange={(e) => setPasswordAgain(e.target.value)}
+              required
+              type="password"
+              placeholder="Enter password"
+            />
+            <PasswordChecklist
+              rules={["minLength", "specialChar", "number", "capital", "match"]}
+              minLength={5}
+              value={password}
+              valueAgain={passwordAgain}
+              onChange={(isValid) => {
+                if (isValid) {
+                  setFormData({
+                    ...formData,
+                    password: password,
+                  });
+                }
+              }}
             />
           </Form.Group>
 
@@ -121,20 +141,12 @@ function HospitalSignup() {
 
           <Form.Group className="mb-3" controlId="type">
             <Form.Label>Select Organisation Type</Form.Label>
-            <DatalistInput
-              placeholder="Click here to select"
-              items={[
-                { id: "1", value: "Government" },
-                { id: "2", value: "Non-Profit" },
-                { id: "3", value: "Profit" },
-              ]}
-              onSelect={(item) => {
-                setFormData({
-                  ...formData,
-                  type: item.value,
-                });
-              }}
-            />
+            <Form.Select onChange={handleChange} name="type" required>
+              <option>Open this select menu</option>
+              <option value="Government">Government</option>
+              <option value="Non-Profit">Non-Profit</option>
+              <option value="Profit">Profit</option>
+            </Form.Select>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="date_estb">

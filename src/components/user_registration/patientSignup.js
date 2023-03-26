@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import DatalistInput from "react-datalist-input";
-import "react-datalist-input/dist/styles.css";
+import PasswordChecklist from "react-password-checklist";
 import axios from "axios";
 
 function PatientSignup() {
@@ -10,6 +9,9 @@ function PatientSignup() {
   const [selectedDate, setSelectedDate] = useState(null);
   const [formData, setFormData] = useState();
   const [success, setSucess] = useState(false);
+  const [password, setPassword] = useState("");
+  const [passwordAgain, setPasswordAgain] = useState("");
+
   const handleChange = (event) => {
     setFormData({
       ...formData,
@@ -60,6 +62,37 @@ function PatientSignup() {
             />
           </Form.Group>
 
+          <Form.Group className="mb-3">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              required
+              type="password"
+              placeholder="Enter your password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control
+              onChange={(e) => setPasswordAgain(e.target.value)}
+              required
+              type="password"
+              placeholder="Enter password"
+            />
+            <PasswordChecklist
+              rules={["minLength", "specialChar", "number", "capital", "match"]}
+              minLength={5}
+              value={password}
+              valueAgain={passwordAgain}
+              onChange={(isValid) => {
+                if (isValid) {
+                  setFormData({
+                    ...formData,
+                    password: password,
+                  });
+                }
+              }}
+            />
+          </Form.Group>
+
           <Form.Group className="mb-3" controlId="address">
             <Form.Label>Address</Form.Label>
             <Form.Control
@@ -95,11 +128,11 @@ function PatientSignup() {
 
           <Form.Group className="mb-3" controlId="blood">
             <Form.Label>Blood Group</Form.Label>
-            <DatalistInput
+            {/* <DatalistInput
               placeholder="Click here to select"
               items={[
                 { id: "1", value: "O+" },
-                { id: "2", value: "0-" },
+                { id: "2", value: "O-" },
                 { id: "3", value: "A+" },
                 { id: "4", value: "A-" },
                 { id: "5", value: "B+" },
@@ -113,12 +146,23 @@ function PatientSignup() {
                   type: item.value,
                 });
               }}
-            />
+            /> */}
+            <Form.Select onChange={handleChange} name="blood" required>
+              <option>Open this select menu</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+            </Form.Select>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="gender">
             <Form.Label>Gender</Form.Label>
-            <DatalistInput
+            {/* <DatalistInput
               placeholder="Click here to select"
               items={[
                 { id: "1", value: "Male" },
@@ -131,7 +175,13 @@ function PatientSignup() {
                   type: item.value,
                 });
               }}
-            />
+            /> */}
+            <Form.Select onChange={handleChange} name="gender" required>
+              <option>Open this select menu</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </Form.Select>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="dob">

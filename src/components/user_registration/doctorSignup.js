@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import PasswordChecklist from "react-password-checklist";
 import axios from "axios";
 
 function DoctorSignup() {
@@ -8,6 +9,9 @@ function DoctorSignup() {
   const [selectedDate, setSelectedDate] = useState(null);
   const [formData, setFormData] = useState();
   const [success, setSucess] = useState(false);
+  const [password, setPassword] = useState("");
+  const [passwordAgain, setPasswordAgain] = useState("");
+
   const handleChange = (event) => {
     setFormData({
       ...formData,
@@ -29,9 +33,8 @@ function DoctorSignup() {
     setValidated(true);
 
     // send data to backend
-    const data = formData;
     axios
-      .post("http://localhost:3001/signup/doctor", data)
+      .post("http://localhost:3001/signup/doctor", formData)
       .then((response) => console.log(response))
       .then(setSucess(true))
       .catch((error) => console.log(error));
@@ -56,6 +59,37 @@ function DoctorSignup() {
               required
               type="text"
               placeholder="Dr Santosh Stark"
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              required
+              type="password"
+              placeholder="Enter your password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control
+              onChange={(e) => setPasswordAgain(e.target.value)}
+              required
+              type="password"
+              placeholder="Enter password"
+            />
+            <PasswordChecklist
+              rules={["minLength", "specialChar", "number", "capital", "match"]}
+              minLength={5}
+              value={password}
+              valueAgain={passwordAgain}
+              onChange={(isValid) => {
+                if (isValid) {
+                  setFormData({
+                    ...formData,
+                    password: password,
+                  });
+                }
+              }}
             />
           </Form.Group>
 
