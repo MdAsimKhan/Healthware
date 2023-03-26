@@ -11,7 +11,7 @@ function PatientDashboard() {
                             <Card.Text>
                                 View and update your profile information.
                             </Card.Text>
-                            <Button variant="primary" href="/profile">
+                            <Button variant="primary" href="p/profile">
                                 Go to Profile
                             </Button>
                         </Card.Body>
