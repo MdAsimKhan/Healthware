@@ -4,24 +4,24 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 
 
-function card_Info(user) {
-    return (
-        <>
-            <Card className='smlCard' style={{ width: '100%' }}>
-                <Card.Header className='cardHeader'>{user}</Card.Header>
-                <Link to={`signup/`+user.toLowerCase()} style={{ color: 'inherit', textDecoration: 'inherit'}} >
-                    <Card.Body>
-                        <Card.Title className='cardTitle'>Sign UP</Card.Title>
-                        <Card.Text className='cardText'>
-                            We care for you
-                        </Card.Text>
-                    </Card.Body>
-                </Link>
-            </Card>
-        </>
+// function card_Info(user) {
+//     return (
+//         <>
+//             <Card className='smlCard' style={{ width: '100%' }}>
+//                 <Card.Header className='cardHeader'>{user}</Card.Header>
+//                 <Link to={`signup/`+user.toLowerCase()} style={{ color: 'inherit', textDecoration: 'inherit'}} >
+//                     <Card.Body>
+//                         <Card.Title className='cardTitle'>Sign UP</Card.Title>
+//                         <Card.Text className='cardText'>
+//                             We care for you
+//                         </Card.Text>
+//                     </Card.Body>
+//                 </Link>
+//             </Card>
+//         </>
 
-    );
-}
+//     );
+// }
 
 
 function Home() {
@@ -42,9 +42,7 @@ function Home() {
                         </Card.ImgOverlay>
 
                         <div className='cardContainer'>
-                            {card_Info("Hospital")}
-                            {card_Info("Doctor")}
-                            {card_Info("Patient")}
+                            
                         
 
 
