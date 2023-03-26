@@ -24,6 +24,7 @@ function App() {
 
 
             <Route path="/signup" element={<Signup/>}>
+
               <Route path="hospital" element={<HospitalSignup />} />
               <Route path="doctor" element={<DoctorSignup />} />
               <Route path="patient" element={<PatientSignup />} />
@@ -32,7 +33,7 @@ function App() {
             <Route path="/:id">
               <Route path="d/profile" element={<Profile />} />
               <Route path="d/appointments" element={<Appointment />} />
-   
+
               {/* <Route path="profile" element={<UserProfile />} /> */}
               <Route path="doctor_dashboard" element={<DoctorDashboard />} />
               <Route path="patient_dashboard" element={<PatientDashboard />} />

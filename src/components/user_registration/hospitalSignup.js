@@ -1,24 +1,22 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
+import PasswordChecklist from "react-password-checklist";
 import axios from "axios";
 import Registration from "./registration_done";
+
 function HospitalSignup() {
-
-
   const [validated, setValidated] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
   const [formData, setFormData] = useState();
-  const [success, setSucess] = useState(false)
+  const [success, setSucess] = useState(false);
+  const [password, setPassword] = useState("");
+  const [passwordAgain, setPasswordAgain] = useState("");
 
   const handleChange = (event) => {
     setFormData({
-
       ...formData,
       [event.target.name]: event.target.value,
-
     });
   };
 
@@ -28,24 +26,20 @@ function HospitalSignup() {
     // validate form
     setSelectedDate(selectedDate);
     const form = event.currentTarget;
-  
 
-    
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
     setValidated(true);
-    const data = formData;
 
+    // send to backend
     axios
-      .post("http://localhost:3001/signup/hospital", data)
+      .post("http://localhost:3001/signup/hospital", formData)
       .then((response) => console.log(response))
       .then(setSucess(true))
-      .catch((error) => console.log(error))
-  }
-
-
+      .catch((error) => console.log(error));
+  };
 
   return (
     <>
@@ -54,7 +48,6 @@ function HospitalSignup() {
           <Registration />
         </section>
       ) : (
-
         <Form
           noValidate
           validated={validated}
@@ -69,6 +62,37 @@ function HospitalSignup() {
               required
               type="text"
               placeholder="Enter organisation name"
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              required
+              type="password"
+              placeholder="Enter your password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control
+              onChange={(e) => setPasswordAgain(e.target.value)}
+              required
+              type="password"
+              placeholder="Enter password"
+            />
+            <PasswordChecklist
+              rules={["minLength", "specialChar", "number", "capital", "match"]}
+              minLength={5}
+              value={password}
+              valueAgain={passwordAgain}
+              onChange={(isValid) => {
+                if (isValid) {
+                  setFormData({
+                    ...formData,
+                    password: password,
+                  });
+                }
+              }}
             />
           </Form.Group>
 
@@ -110,36 +134,30 @@ function HospitalSignup() {
             <Form.Control
               name="website"
               onChange={handleChange}
-              type="url"
+              type="text"
               placeholder="www.organisation_name.com"
             />
           </Form.Group>
 
-          {/* set onChange */}
           <Form.Group className="mb-3" controlId="type">
-            <Form.Label>Type</Form.Label>
-            <Form.Select onChange={handleChange} name="type">
-                <option>--Select--</option>
-                <option value="1">Government</option>
-                <option value="2">For-profit</option>
-                <option value="3">Non-profit</option>
+            <Form.Label>Select Organisation Type</Form.Label>
+            <Form.Select onChange={handleChange} name="type" required>
+              <option>Open this select menu</option>
+              <option value="Government">Government</option>
+              <option value="Non-Profit">Non-Profit</option>
+              <option value="Profit">Profit</option>
             </Form.Select>
           </Form.Group>
 
-          {/* set onChange */}
           <Form.Group className="mb-3" controlId="date_estb">
             <Form.Label>Date Established</Form.Label>
-            {/* <DatePicker
+            <Form.Control
               name="date_estb"
-              selected={selectedDate}
-              onChange={(date) => setSelectedDate(date)}
-              dateFormat="dd/MM/yyyy"
-              showYearDropdown
-              scrollableYearDropdown
-              yearDropdownItemNumber={Date.now}
+              onChange={handleChange}
               required
-              
-            /> */}
+              type="date"
+              placeholder="dd/mm/yyyy"
+            />
           </Form.Group>
 
           <Form.Group controlId="certificate" className="mb-3">
