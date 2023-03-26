@@ -10,7 +10,7 @@ import PatientSignup from "./components/user_registration/patientSignup";
 import LoginPage from "./components/user_login/login_fr";
 import DoctorDashboard from "./components/dashboard/doctor_dashboard";
 import PatientDashboard from "./components/dashboard/patient_dashboard";
-import Profile from "./components/dashboard/pages/user_profile";
+import Profile from "./components/dashboard/user_profile";
 import Appointment from "./components/dashboard/pages/book_doctor_appointment";
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/login" element={<LoginPage />}></Route>
 
-            <Route path="/signup">
+            <Route path="/signup" element={<Signup />}>
               <Route path="hospital" element={<HospitalSignup />} />
               <Route path="doctor" element={<DoctorSignup />} />
               <Route path="patient" element={<PatientSignup />} />
