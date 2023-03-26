@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import Home from "./Home";
 import { Routes, Route } from "react-router-dom";
 import Navbars from "./components/Navbar/Navbars";
+import Signup from "./components/user_registration/signup_fr";
 import HospitalSignup from "./components/user_registration/hospitalSignup";
 import DoctorSignup from "./components/user_registration/doctorSignup";
 import PatientSignup from "./components/user_registration/patientSignup";
@@ -22,7 +23,7 @@ function App() {
             <Route path="/login" element={<LoginPage />}></Route>
 
 
-            <Route path="/signup" >
+            <Route path="/signup" element={<Signup/>}>
               <Route path="hospital" element={<HospitalSignup />} />
               <Route path="doctor" element={<DoctorSignup />} />
               <Route path="patient" element={<PatientSignup />} />
