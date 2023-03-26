@@ -18,9 +18,7 @@ root.render(
       }}> */}
 
     <BrowserRouter>
-
       <App />
-
     </BrowserRouter>
     {/* </Auth0Provider> */}
   </React.StrictMode>
