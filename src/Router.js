@@ -10,8 +10,11 @@ import PatientSignup from "./components/user_registration/patientSignup";
 import LoginPage from "./components/user_login/login_fr";
 import DoctorDashboard from "./components/dashboard/doctor_dashboard";
 import PatientDashboard from "./components/Pdashboard/patientdashboard";
-import Profile from "./components/Pdashboard/patientprofile";
+import Dprofile from "./components/dashboard/dProfile";
 import Appointment from "./components/Pdashboard/appointments";
+import HospitalDashboard from "./components/dashboard/hospital_dashboard";
+import HProfile from "./components/dashboard/hProfile";
+import Profile from "./components/Pdashboard/patientprofile";
 function App() {
   return (
     <div className="App">
@@ -31,12 +34,15 @@ function App() {
             </Route>
 
             <Route path="/:id">
-              <Route path="d/profile" element={<Profile />} />
+              <Route path="d/profile" element={<Dprofile />} />
+              <Route path="p/profile" element={<Profile />} />
+              <Route path="h/Profile" element={<HProfile />} />
               <Route path="d/appointments" element={<Appointment />} />
 
               {/* <Route path="profile" element={<UserProfile />} /> */}
               <Route path="doctor_dashboard" element={<DoctorDashboard />} />
               <Route path="patient_dashboard" element={<PatientDashboard />} />
+              <Route path="hospital_dashboard" element={<HospitalDashboard />} />
             </Route>
 
             <Route path="*" element={<h1>Not found</h1>} />
