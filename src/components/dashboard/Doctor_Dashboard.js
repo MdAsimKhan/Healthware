@@ -12,7 +12,7 @@ function DoctorDashboard() {
                             <Card.Text>
                                 View and update your profile information.
                             </Card.Text>
-                            <Button variant="primary" href="/profile">
+                            <Button variant="primary" href="d/profile">
                                 Go to Profile
                             </Button>
                         </Card.Body>
@@ -25,7 +25,7 @@ function DoctorDashboard() {
                             <Card.Text>
                                 View and manage your upcoming appointments.
                             </Card.Text>
-                            <Button variant="primary" href="/appointments">
+                            <Button variant="primary" href="d/appointments">
                                 Go to Appointments
                             </Button>
                         </Card.Body>

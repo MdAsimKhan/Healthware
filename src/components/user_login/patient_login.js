@@ -7,7 +7,7 @@ import { Router, useNavigate } from 'react-router-dom';
 
 
 
-function DoctorLogin() {
+function PatientLogin() {
   // const history = useHistory();
   const [validated, setValidated] = useState(false);
   const [formData, setFormData] = useState();
@@ -42,7 +42,7 @@ function DoctorLogin() {
 
     setValidated(true);
 
-    await fetch('http://localhost:3001/doctor').then(function (response) {
+    await fetch('http://localhost:3001/patient').then(function (response) {
       return response.json();
     }).then(function (data) {
       data.map(async (ele) => {
@@ -52,7 +52,7 @@ function DoctorLogin() {
           setSuccess(true);
           // const Rd = 
           // console.log(success)
-          { success ? navigate(`/${ele._id}/doctor_dashboard`) : console.log('not working') }
+          { success ? navigate(`/${ele._id}/patient_dashboard`) : console.log('not working') }
         }
       })
 
@@ -64,7 +64,7 @@ function DoctorLogin() {
     <>
 
       <div className="container">
-        <h1>Doctor login page</h1>
+        <h1>Patient login page</h1>
         {showError && (
           <Alert variant="danger" onClose={() => setShowError(false)} dismissible>
             Invalid email or password
@@ -95,4 +95,4 @@ function DoctorLogin() {
   );
 }
 
-export default DoctorLogin;
+export default PatientLogin;
