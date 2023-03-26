@@ -2,15 +2,16 @@ import "./css/App.css";
 import { Container } from "react-bootstrap";
 import Home from "./Home";
 import { Routes, Route } from "react-router-dom";
-import Navbars from "./components/Navbar/Navbars";
+import Navbars from "./components/navbar/Navbars";
 import HospitalSignup from "./components/user_registration/hospitalSignup";
 import DoctorSignup from "./components/user_registration/doctorSignup";
 import PatientSignup from "./components/user_registration/patientSignup";
 import LoginPage from "./components/user_login/login_fr";
-import DoctorDashboard from "./components/dashboard/Doctor_Dashboard";
-import PatientDashboard from "./components/Pdashboard/patientdashboard";
-import Profile from "./components/Pdashboard/patientprofile";
-import Appointment from "./components/Pdashboard/appointments";
+import DoctorDashboard from "./components/dashboard/doctor_dashboard";
+import PatientDashboard from "./components/dashboard/patient_dashboard";
+import Profile from "./components/dashboard/pages/user_profile";
+import Appointment from "./components/dashboard/pages/book_doctor_appointment";
+
 function App() {
   return (
     <div className="App">
@@ -28,8 +29,8 @@ function App() {
             </Route>
 
             <Route path="/:id">
-              <Route path="d/profile" element={<Profile />} />
-              <Route path="d/appointments" element={<Appointment />} />
+              <Route path="p/profile" element={<Profile />} />
+              <Route path="p/appointments" element={<Appointment />} />
 
               {/* <Route path="profile" element={<UserProfile />} /> */}
               <Route path="doctor_dashboard" element={<DoctorDashboard />} />
