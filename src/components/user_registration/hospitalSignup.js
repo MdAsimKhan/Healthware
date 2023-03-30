@@ -165,13 +165,7 @@ function HospitalSignup() {
             <Form.Text className="text-muted">
               We might contact you for verification.
             </Form.Text>
-            <Form.Control
-              // name="registration_certificate"
-              // onChange={handleChange}
-              // required
-              type="file"
-              accept=".pdf"
-            />
+            <Form.Controls type="file" accept=".pdf" />
           </Form.Group>
 
           <Button variant="primary" type="submit">

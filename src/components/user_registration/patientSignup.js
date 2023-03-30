@@ -128,25 +128,6 @@ function PatientSignup() {
 
           <Form.Group className="mb-3" controlId="blood">
             <Form.Label>Blood Group</Form.Label>
-            {/* <DatalistInput
-              placeholder="Click here to select"
-              items={[
-                { id: "1", value: "O+" },
-                { id: "2", value: "O-" },
-                { id: "3", value: "A+" },
-                { id: "4", value: "A-" },
-                { id: "5", value: "B+" },
-                { id: "6", value: "B-" },
-                { id: "7", value: "AB+" },
-                { id: "8", value: "AB-" },
-              ]}
-              onSelect={(item) => {
-                setFormData({
-                  ...formData,
-                  type: item.value,
-                });
-              }}
-            /> */}
             <Form.Select onChange={handleChange} name="blood" required>
               <option>Open this select menu</option>
               <option value="O+">O+</option>
@@ -162,20 +143,6 @@ function PatientSignup() {
 
           <Form.Group className="mb-3" controlId="gender">
             <Form.Label>Gender</Form.Label>
-            {/* <DatalistInput
-              placeholder="Click here to select"
-              items={[
-                { id: "1", value: "Male" },
-                { id: "2", value: "Female" },
-                { id: "3", value: "Other" },
-              ]}
-              onSelect={(item) => {
-                setFormData({
-                  ...formData,
-                  type: item.value,
-                });
-              }}
-            /> */}
             <Form.Select onChange={handleChange} name="gender" required>
               <option>Open this select menu</option>
               <option value="Male">Male</option>
@@ -187,7 +154,7 @@ function PatientSignup() {
           <Form.Group className="mb-3" controlId="dob">
             <Form.Label>Date of birth</Form.Label>
             <Form.Control
-              name="date_estb"
+              name="dob"
               onChange={handleChange}
               required
               type="date"
