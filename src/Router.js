@@ -15,6 +15,7 @@ import Appointment from "./components/dashboard/pages/book_doctor_appointment";
 import Dprofile from "./components/dashboard/dProfile";
 import HProfile from "./components/dashboard/hProfile";
 import HospitalDashboard from "./components/dashboard/hospital_dashboard"
+
 function App() {
   return (
     <div className="App">
@@ -22,30 +23,35 @@ function App() {
       <div className="content">
         <Container>
           <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/login" element={<LoginPage />}></Route>
+          
+              <Route path="/" element={<Home />}></Route>
+              <Route path="/login" element={<LoginPage />}></Route>
 
-            <Route path="/signup" element={<Signup />}>
-              <Route path="hospital" element={<HospitalSignup />} />
-              <Route path="doctor" element={<DoctorSignup />} />
-              <Route path="patient" element={<PatientSignup />} />
-            </Route>
+              <Route path="/signup" element={<Signup />}>
+                <Route path="hospital" element={<HospitalSignup />} />
+                <Route path="doctor" element={<DoctorSignup />} />
+                <Route path="patient" element={<PatientSignup />} />
+              </Route>
 
-            <Route path="/:id">
-              <Route path="d/profile" element={<Dprofile />} />
-              <Route path="p/profile" element={<Profile />} />
-              <Route path="h/Profile" element={<HProfile />} />
-              <Route path="d/appointments" element={<Appointment />} />
 
-              {/* <Route path="profile" element={<UserProfile />} /> */}
-              <Route path="doctor_dashboard" element={<DoctorDashboard />} />
-              <Route path="patient_dashboard" element={<PatientDashboard />} />
-              <Route
-                path="hospital_dashboard" element={<HospitalDashboard />}
-              />
-            </Route>
+         
+                <Route path="/:id">
+                  {/* <Route path="profile" element={<UserProfile />} /> */}
+                  <Route path="doctor_dashboard" element={<DoctorDashboard />} />
+                  <Route path="patient_dashboard" element={<PatientDashboard />} />
+                  <Route path="hospital_dashboard" element={<HospitalDashboard />}/>
+                  <Route path="d/profile" element={<Dprofile />} />
+                  <Route path="p/profile" element={<Profile />} />
+                  <Route path="h/Profile" element={<HProfile />} />
+                  <Route path="d/appointments" element={<Appointment />} />
+                  <Route path="p/appointments" element={<Appointment />} />
 
-            <Route path="*" element={<h1>Not found</h1>} />
+                  
+                </Route>
+           
+
+              <Route path="*" element={<h1>Not found</h1>} />
+           
           </Routes>
         </Container>
       </div>

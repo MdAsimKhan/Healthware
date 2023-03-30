@@ -27,6 +27,7 @@ function DoctorSignup() {
     if (formData.phone.length < 10) {
       console.log("small bros");
     }
+
     setSelectedDate(selectedDate);
     const form = event.currentTarget;
 

@@ -28,9 +28,21 @@ function PatientLogin() {
 
     setValidated(true);
 
-    await fetch("http://localhost:3001/patient")
-      .then(function (response) {
-        return response.json();
+
+    await fetch('http://localhost:3001/patient').then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      data.map(async (ele) => {
+        if (ele.email == formData.email && ele.password == formData.password) {
+          // console.log('Success!')
+
+          setSuccess(true);
+      
+          // const Rd = 
+          // console.log(success)
+          { success ? navigate(`/${ele._id}/patient_dashboard`) : console.log('not working') }
+        }
+
       })
       .then(function (data) {
         data.map(async (ele) => {
