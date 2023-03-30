@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './css/index.css';
 import App from './Router';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Router, Route, Routes } from 'react-router-dom';
 // import { Auth0Provider } from "@auth0/auth0-react";
 
 
@@ -18,7 +18,9 @@ root.render(
       }}> */}
 
     <BrowserRouter>
-      <App />
+      <Routes>
+        <Route path='/*' element={<App />} />
+      </Routes>
     </BrowserRouter>
     {/* </Auth0Provider> */}
   </React.StrictMode>
