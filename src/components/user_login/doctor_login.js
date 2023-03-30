@@ -2,7 +2,7 @@ import { useState } from 'react';
 // import { useHistory } from 'react-router-dom';
 import { Form, Button, Alert } from 'react-bootstrap';
 // import useFetch from 'react-fetch-hook';
-import { Router, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -13,6 +13,7 @@ function DoctorLogin() {
   const [formData, setFormData] = useState();
   const [showError, setShowError] = useState(false);
   const [success, setSuccess] = useState(false)
+
   const navigate = useNavigate();
 
 
@@ -33,6 +34,13 @@ function DoctorLogin() {
     event.preventDefault();
 
     // validate form
+
+    // if ((formData.phone).length < 10) {
+    //   console.log('small bros');
+      
+    // }
+
+
     const form = event.currentTarget;
 
     if (form.checkValidity() === false) {
@@ -49,12 +57,17 @@ function DoctorLogin() {
       data.map( ( ele) => {
         if ( ele.email == formData.email && ele.password == formData.password) {
           // console.log('Success!')
-
+      
           setSuccess(true);
+          
           // const Rd = 
           // console.log(success)
-          { success ? navigate(`/${ele._id}/doctor_dashboard`) : console.log('not working') }
         }
+          setSuccess(false)
+          
+        
+        
+        { success ? navigate(`/${ele._id}/doctor_dashboard`) : alert('not here') }
       })
 
     })
@@ -85,7 +98,7 @@ function DoctorLogin() {
           </Form.Group>
           <Form.Group controlId="password">
             <Form.Label>Password</Form.Label>
-            <Form.Control name="password" onChange={handleChange} type="password" />
+            <Form.Control name="password" onChange={handleChange} required type="password" placeholder="password"/>
           </Form.Group>
           <Button variant="primary" type="submit">
             Login

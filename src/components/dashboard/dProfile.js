@@ -3,6 +3,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+
 // const data = {name : ele.name ,specialist,phone : ele.phone ,hospital,email: ele.email,education,gender,dob: ele.dob}
 
 
@@ -35,7 +36,7 @@ const Dprofile = () => {
 
                             <Card >
                                 <Card.Header>
-                                    <h4 key={ele._id} >Personal Information {ele._id}</h4>
+                                    <h4 key={ele._id} >Personal Information</h4>
                                 </Card.Header>
                                 <ListGroup variant="flush">
                                     <ListGroup.Item  >Name: {ele.name}</ListGroup.Item>
