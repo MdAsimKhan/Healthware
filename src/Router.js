@@ -1,6 +1,6 @@
 import "./css/App.css";
 import { Container } from "react-bootstrap";
-import Home from "./home";
+import Home from "./Home";
 import { Routes, Route } from "react-router-dom";
 import Navbars from "./components/Navbar/Navbars";
 import Signup from "./components/user_registration/signup_fr";
