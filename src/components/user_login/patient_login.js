@@ -56,7 +56,7 @@ function PatientLogin() {
           }
         });
       });
-  };
+  });
 
   return (
     <>
@@ -97,6 +97,6 @@ function PatientLogin() {
       </div>
     </>
   );
-}
+}}
 
 export default PatientLogin;

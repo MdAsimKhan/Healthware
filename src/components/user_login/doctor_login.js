@@ -80,7 +80,7 @@ function DoctorLogin() {
           }
         });
       });
-  };
+  });
 
   return (
     <>
@@ -119,6 +119,6 @@ function DoctorLogin() {
       </div>
     </>
   );
-}
+}}
 
 export default DoctorLogin;

@@ -54,7 +54,7 @@ function HospitalLogin() {
           }
         });
       });
-  };
+  });
 
   return (
     <>
@@ -95,6 +95,6 @@ function HospitalLogin() {
       </div>
     </>
   );
-}
+}}
 
 export default HospitalLogin;
