@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import PasswordChecklist from "react-password-checklist";
 import axios from "axios";
-import Registration from "./registration_done";
+import Registration from "./registration_done"
 
 function HospitalSignup() {
   const [validated, setValidated] = useState(false);

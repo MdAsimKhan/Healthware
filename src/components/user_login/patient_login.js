@@ -44,18 +44,6 @@ function PatientLogin() {
         }
 
       })
-      .then(function (data) {
-        data.map(async (ele) => {
-          if (ele.email == formData.email) {
-            setSuccess(true);
-            {
-              success
-                ? navigate(`/${ele._id}/patient_dashboard`)
-                : console.log("not working");
-            }
-          }
-        });
-      });
   });
 
   return (

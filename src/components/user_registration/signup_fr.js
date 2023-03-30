@@ -16,20 +16,20 @@ const Signup = () => {
      * not using it in this example so we will omit it.
      */
     const handleChange = (val) => {
-    
-        if (val ===1) {
-     
-            setValue(<DoctorSignup/>)
-        } 
-        else if (val === 2){
-         
-            setValue(<PatientSignup/>)
+
+        if (val === 1) {
+
+            setValue(<DoctorSignup />)
         }
-        else if (val === 3){
-           
-            setValue(<HospitalSignup/>)
+        else if (val === 2) {
+
+            setValue(<PatientSignup />)
         }
-        
+        else if (val === 3) {
+
+            setValue(<HospitalSignup />)
+        }
+
     };
 
 
@@ -41,11 +41,11 @@ const Signup = () => {
                 <h1>Signup for?</h1>
 
                 <section className="navbody">
-                    <ToggleButtonGroup type="radio" name="options" defaultValue={1}  onChange={handleChange}>
+                    <ToggleButtonGroup type="radio" name="options" defaultValue={1} onChange={handleChange}>
                         <ToggleButton id="tbg-radio-1" value={1}>
-                            Doctor Signup 
+                            Doctor Signup
                         </ToggleButton>
-                        <ToggleButton id="tbg-radio-2"  value={2}>
+                        <ToggleButton id="tbg-radio-2" value={2}>
                             Patient Signup
                         </ToggleButton>
                         <ToggleButton id="tbg-radio-3" value={3}>
@@ -53,13 +53,13 @@ const Signup = () => {
                         </ToggleButton>
                     </ToggleButtonGroup>
                 </section>
-                <br/>
+                <br />
                 <section >
-                {!value ? <DoctorSignup/> : value} 
+                    {!value ? <DoctorSignup /> : value}
                 </section>
             </div>
         </>
     )
 }
- 
+
 export default Signup;

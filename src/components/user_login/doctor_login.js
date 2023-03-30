@@ -25,13 +25,13 @@ function DoctorLogin() {
     });
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit =  (event) => {
     event.preventDefault();
     // validate form
 
     // if ((formData.phone).length < 10) {
     //   console.log('small bros');
-      
+
     // }
 
 
@@ -45,80 +45,66 @@ function DoctorLogin() {
     setValidated(true);
 
 
-    
-      await fetch('http://localhost:3001/doctor').then(function (response) {
+
+     fetch('http://localhost:3001/doctor').then(function (response) {
       return response.json();
     }).then(function (data) {
-      data.map( ( ele) => {
-        if ( ele.email == formData.email && ele.password == formData.password) {
-          // console.log('Success!')
-      
+      data.map((ele) => {
+        if (ele.email == formData.email && ele.password == formData.password) {
+          console.log('Success!')
+
           setSuccess(true);
-          
+
           // const Rd = 
           // console.log(success)
         }
-          setSuccess(false)
-          
-        
-        
-        { success ? navigate(`/${ele._id}/doctor_dashboard`) : alert('not here') }
+        // setSuccess(false)
+
+
+
+        { success ? navigate(`/${ele._id}/doctor_dashboard`) : console.log('not working') }
 
       })
-      .then(function (data) {
-        data.map((ele) => {
-          if (
-            ele.email == formData.email &&
-            ele.password == formData.password
-          ) {
-            setSuccess(true);
-            {
-              success
-                ? navigate(`/${ele._id}/doctor_dashboard`)
-                : console.log("not working");
-            }
-          }
-        });
-      });
-  });
+    });
 
-  return (
-    <>
-      <div className="container">
-        <h1>Doctor login page</h1>
-        {showError && (
-          <Alert
-            variant="danger"
-            onClose={() => setShowError(false)}
-            dismissible
-          >
-            Invalid email or password
-          </Alert>
-        )}
-        <Form validated={validated} method="post" onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="email">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              name="email"
-              onChange={handleChange}
-              required
-              type="email"
-              placeholder="youremail@service.com"
-            />
-          </Form.Group>
-          <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
+    return (
+      <>
+        <div className="container">
+          <h1>Doctor login page</h1>
+          {showError && (
+            <Alert
+              variant="danger"
+              onClose={() => setShowError(false)}
+              dismissible
+            >
+              Invalid email or password
+            </Alert>
+          )}
+          <Form validated={validated} method="post" onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="email">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                name="email"
+                onChange={handleChange}
+                required
+                type="email"
+                placeholder="youremail@service.com"
+              />
+            </Form.Group>
+            <Form.Group controlId="password">
+              <Form.Label>Password</Form.Label>
 
-            <Form.Control name="password" onChange={handleChange} required type="password" placeholder="password"/>
+              <Form.Control name="password" onChange={handleChange} required type="password" placeholder="password" />
 
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Login
-          </Button>
-        </Form>
-      </div>
-    </>
-  );
-}}
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Login
+            </Button>
+          </Form>
+        </div>
+      </>
+    );
+  }
+}
 
 export default DoctorLogin;
