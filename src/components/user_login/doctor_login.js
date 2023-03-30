@@ -42,11 +42,12 @@ function DoctorLogin() {
 
     setValidated(true);
 
-    await fetch('http://localhost:3001/doctor').then(function (response) {
+    
+      await fetch('http://localhost:3001/doctor').then(function (response) {
       return response.json();
     }).then(function (data) {
-      data.map(async (ele) => {
-        if (ele.email == formData.email) {
+      data.map( ( ele) => {
+        if ( ele.email == formData.email && ele.password == formData.password) {
           // console.log('Success!')
 
           setSuccess(true);
@@ -57,6 +58,7 @@ function DoctorLogin() {
       })
 
     })
+    
 
   }
 

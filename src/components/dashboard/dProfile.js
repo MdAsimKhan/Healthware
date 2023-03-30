@@ -1,30 +1,74 @@
 import { Card, ListGroup } from 'react-bootstrap';
 import React from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+// const data = {name : ele.name ,specialist,phone : ele.phone ,hospital,email: ele.email,education,gender,dob: ele.dob}
 
 
-const Dprofile = ({ name, specialist, phone, hospital, education, email, gender, dob }) => {
-    return ( 
+// {name,specialist,phone,hospital,email,education,gender,dob}
+
+const Dprofile = () => {
+    const [posts, setPosts] = useState([])
+    const [loading, setLoading] = useState(true)
+    const { id } = useParams();
+
+    useEffect(() => {
+
+        const getRes = async () => {
+            const res = await axios.get('http://localhost:3001/doctor')
+            setPosts(res.data)
+        }
+        setLoading(false)
+        getRes()
+    }, [])
+
+    return (
+
         <>
-         <Card>
-            <Card.Header>
-                <h4>Personal Information</h4>
-            </Card.Header>
-            <ListGroup variant="flush">
-                <ListGroup.Item>Name: {name}</ListGroup.Item>
-                <ListGroup.Item>Specialist: {specialist}</ListGroup.Item>
-                <ListGroup.Item>Contact: {phone}</ListGroup.Item>
-                <ListGroup.Item>Hospial: {hospital}</ListGroup.Item>
-                <ListGroup.Item>Email: {email}</ListGroup.Item>
-                <ListGroup.Item>Education: {education}</ListGroup.Item>
-                <ListGroup.Item>gender: {gender}</ListGroup.Item>
-                <ListGroup.Item>Date of birth: {dob}</ListGroup.Item>
+            {loading && <h1>loading</h1>}
+            {!loading && <>
+                {posts.map(ele => {
+                    if (ele._id === id) {
+                        return (
 
-            </ListGroup>
-        </Card>
 
-        {/* <h1>hii</h1> */}
+                            <Card >
+                                <Card.Header>
+                                    <h4 key={ele._id} >Personal Information {ele._id}</h4>
+                                </Card.Header>
+                                <ListGroup variant="flush">
+                                    <ListGroup.Item  >Name: {ele.name}</ListGroup.Item>
+                                    <ListGroup.Item>Specialist: {null}</ListGroup.Item>
+                                    <ListGroup.Item >Contact: {ele.phone}</ListGroup.Item>
+                                    <ListGroup.Item>Hospial: {null}</ListGroup.Item>
+                                    <ListGroup.Item >Email: {ele.email}</ListGroup.Item>
+                                    <ListGroup.Item>Education: {null}</ListGroup.Item>
+                                    <ListGroup.Item>gender: {null}</ListGroup.Item>
+                                    <ListGroup.Item>Date of birth: {ele.dob}</ListGroup.Item>
+
+                                </ListGroup>
+                            </Card>
+
+
+                        )
+                    }
+
+                })}
+            </>}
         </>
-     );
+    )
+
+
 }
- 
+
+
+
+
+
+
+
 export default Dprofile;
+
+
+

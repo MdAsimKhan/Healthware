@@ -23,6 +23,12 @@ function DoctorSignup() {
     event.preventDefault();
 
     // validate form
+
+    if ((formData.phone).length < 10) {
+      console.log('small bros');
+      
+    }
+    // console.log(formData.phone)
     setSelectedDate(selectedDate);
     const form = event.currentTarget;
 
@@ -118,7 +124,7 @@ function DoctorSignup() {
           <Form.Group className="mb-3" controlId="DOB">
             <Form.Label>Date of birth</Form.Label>
             <Form.Control
-              name="date_estb"
+              name="dob"
               onChange={handleChange}
               required
               type="date"
