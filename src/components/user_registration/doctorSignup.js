@@ -24,11 +24,9 @@ function DoctorSignup() {
 
     // validate form
 
-    if ((formData.phone).length < 10) {
-      console.log('small bros');
-      
+    if (formData.phone.length < 10) {
+      console.log("small bros");
     }
-    // console.log(formData.phone)
     setSelectedDate(selectedDate);
     const form = event.currentTarget;
 
@@ -131,18 +129,6 @@ function DoctorSignup() {
               placeholder="dd/mm/yyyy"
             />
           </Form.Group>
-
-          {/* make it list type */}
-          {/* <Form.Group className="mb-3" controlId="Specialisation">
-        <Form.Label>Specialisation</Form.Label>
-        <Form.Control
-          onChange={handleChange}
-          name="specialisation"
-          required
-          type="text"
-          placeholder="Orthopaedics"
-        />
-      </Form.Group> */}
 
           <Form.Group controlId="certificate" className="mb-3">
             <Form.Label>Upload Registration Certificate</Form.Label>
