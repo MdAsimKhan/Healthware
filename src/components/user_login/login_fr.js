@@ -54,8 +54,8 @@ const LoginPage = () => {
                 </section>
                 <br/>
                 <section className="loginBox">
-                {/* {!value ? <DoctorLogin/> : value}  */}
-                {value}
+                {!value ? <DoctorLogin/> : value} 
+                {/* {value} */}
                 </section>
             </div>
         </>

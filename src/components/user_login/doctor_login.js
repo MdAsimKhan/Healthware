@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useState } from 'react';
 // import { useHistory } from 'react-router-dom';
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button, Alert } from 'react-bootstrap';
 // import useFetch from 'react-fetch-hook';
-
-import { useNavigate } from 'react-router-dom';
+import { Router, useNavigate } from 'react-router-dom';
 
 
 
@@ -13,28 +12,27 @@ function DoctorLogin() {
   const [validated, setValidated] = useState(false);
   const [formData, setFormData] = useState();
   const [showError, setShowError] = useState(false);
-
   const [success, setSuccess] = useState(false)
-
   const navigate = useNavigate();
+
+
 
   const handleChange = (event) => {
     setFormData({
+
       ...formData,
       [event.target.name]: event.target.value,
+
+
     });
   };
 
-  const handleSubmit =  (event) => {
+  const handleSubmit = async (event) => {
+
+
     event.preventDefault();
+
     // validate form
-
-    // if ((formData.phone).length < 10) {
-    //   console.log('small bros');
-
-    // }
-
-
     const form = event.currentTarget;
 
     if (form.checkValidity() === false) {
@@ -44,67 +42,59 @@ function DoctorLogin() {
 
     setValidated(true);
 
-
-
-     fetch('http://localhost:3001/doctor').then(function (response) {
+    
+      await fetch('http://localhost:3001/doctor').then(function (response) {
       return response.json();
     }).then(function (data) {
-      data.map((ele) => {
-        if (ele.email == formData.email && ele.password == formData.password) {
-          console.log('Success!')
+      data.map( ( ele) => {
+        if ( ele.email == formData.email && ele.password == formData.password) {
+          // console.log('Success!')
 
           setSuccess(true);
-
           // const Rd = 
           // console.log(success)
+          { success ? navigate(`/${ele._id}/doctor_dashboard`) : console.log('not working') }
         }
-        // setSuccess(false)
-
-
-
-        { success ? navigate(`/${ele._id}/doctor_dashboard`) : console.log('not working') }
-
       })
-    });
 
-    return (
-      <>
-        <div className="container">
-          <h1>Doctor login page</h1>
-          {showError && (
-            <Alert
-              variant="danger"
-              onClose={() => setShowError(false)}
-              dismissible
-            >
-              Invalid email or password
-            </Alert>
-          )}
-          <Form validated={validated} method="post" onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                name="email"
-                onChange={handleChange}
-                required
-                type="email"
-                placeholder="youremail@service.com"
-              />
-            </Form.Group>
-            <Form.Group controlId="password">
-              <Form.Label>Password</Form.Label>
+    })
+    
 
-              <Form.Control name="password" onChange={handleChange} required type="password" placeholder="password" />
-
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Login
-            </Button>
-          </Form>
-        </div>
-      </>
-    );
   }
+
+  return (
+    <>
+
+      <div className="container">
+        <h1>Doctor login page</h1>
+        {showError && (
+          <Alert variant="danger" onClose={() => setShowError(false)} dismissible>
+            Invalid email or password
+          </Alert>
+        )}
+        <Form validated={validated} method="post" onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              name="email"
+              onChange={handleChange}
+              required
+              type="email"
+              placeholder="youremail@service.com"
+            />
+          </Form.Group>
+          <Form.Group controlId="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control name="password" onChange={handleChange} type="password" />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Login
+          </Button>
+        </Form>
+      </div>
+
+    </>
+  );
 }
 
 export default DoctorLogin;
