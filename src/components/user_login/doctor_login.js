@@ -42,7 +42,7 @@ function DoctorLogin() {
 
     setValidated(true);
 
-    async() => {
+    
       await fetch('http://localhost:3001/doctor').then(function (response) {
       return response.json();
     }).then(function (data) {
@@ -58,7 +58,7 @@ function DoctorLogin() {
       })
 
     })
-    }
+    
 
   }
 
