@@ -108,3 +108,17 @@ healthware.post("/signup/doctor", (req, res) => {
       res.status(500).json({ err: "Could not create profile" });
     });
 });
+
+// doc appointment
+healthware.post("/p/appointments", (req, res) => {
+  const appointment = req.body;
+
+  db.collection("Appointments")
+    .insertOne(appointment)
+    .then((result) => {
+      res.status(201).json(result);
+    })
+    .catch((err) => {
+      res.status(500).json({ err: "Could not book appointment" });
+    });
+});

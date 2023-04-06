@@ -120,6 +120,16 @@ function DoctorSignup() {
             />
           </Form.Group>
 
+          <Form.Group className="mb-3" controlId="gender">
+            <Form.Label>Gender</Form.Label>
+            <Form.Select onChange={handleChange} name="gender" required>
+              <option>Open this select menu</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </Form.Select>
+          </Form.Group>
+
           <Form.Group className="mb-3" controlId="DOB">
             <Form.Label>Date of birth</Form.Label>
             <Form.Control

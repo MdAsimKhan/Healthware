@@ -21,7 +21,7 @@ function PatientDashboard() {
             <Card.Body>
               <Card.Title>My Appointments</Card.Title>
               <Card.Text>View and manage your upcoming appointments.</Card.Text>
-              <Button variant="primary" href="/appointments">
+              <Button variant="primary" href="p/appointments">
                 Go to Appointments
               </Button>
             </Card.Body>

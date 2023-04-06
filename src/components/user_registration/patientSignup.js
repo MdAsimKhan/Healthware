@@ -5,8 +5,6 @@ import PasswordChecklist from "react-password-checklist";
 import axios from "axios";
 
 function PatientSignup() {
-  const [validated, setValidated] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(null);
   const [formData, setFormData] = useState();
   const [success, setSucess] = useState(false);
   const [password, setPassword] = useState("");
@@ -22,17 +20,6 @@ function PatientSignup() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // validate form
-    setSelectedDate(selectedDate);
-    const form = event.currentTarget;
-
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    setValidated(true);
-
-    // data sent without form validaion
     axios
       .post("http://localhost:3001/signup/patient", formData)
       .then((response) => console.log(response))
@@ -50,7 +37,7 @@ function PatientSignup() {
           </p>
         </section>
       ) : (
-        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control
